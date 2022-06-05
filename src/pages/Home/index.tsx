@@ -4,6 +4,7 @@ import { Input } from "../../components/form/Input";
 import { Select } from "../../components/form/Select";
 import { Text } from "../../components/form/Text";
 import { ReactComponent as CopyIcon } from "../../assets/icons/copy.svg";
+import "../../styles/preview.css";
 
 function Home() {
   const typeOptions = [
@@ -70,11 +71,11 @@ function Home() {
 
   return (
     <div className="flex flex-col items-center">
-      <h1 className="text-5xl font-bold underline text-red-500 p-10">
+      <h1 className="text-3xl lg:text-5xl font-bold underline text-red-500 p-10">
         ChangeLogger
       </h1>
-      <div className="w-3/4">
-        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <div className="w-full flex flex-col md:flex-row gap-1 md:px-2">
+        <form className="rounded px-8 pt-6 border-2 pb-8 w-full">
           <Select
             params={{
               name: "type",
@@ -117,7 +118,8 @@ function Home() {
             }}
           />
         </form>
-        <div className="flex flex-col">
+        <div className="flex flex-col w-full border-2 rounded px-2">
+          <h5 className="self-center text-lg underline">Preview</h5>
           {description ? (
             <button
               onClick={() => copyToClipboard()}
@@ -126,7 +128,7 @@ function Home() {
               <CopyIcon className="w-6 h-6" />
             </button>
           ) : null}
-          <div id="preview">
+          <div id="preview" className="preview">
             {title ? (
               <div dangerouslySetInnerHTML={{ __html: completeTitle }}></div>
             ) : null}
