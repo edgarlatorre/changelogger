@@ -41,7 +41,9 @@ export const Preview = (props: { changelog: Changelog }) => {
         {changelog.title ? (
           <div
             dangerouslySetInnerHTML={{
-              __html: `<p>${changelog.type}: <strong>${changelog.title}</strong></p>`,
+              __html: `<p>${toHTML(changelog.type)}: <strong>${
+                changelog.title
+              }</strong></p>`,
             }}
           ></div>
         ) : null}
