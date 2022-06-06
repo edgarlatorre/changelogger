@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { toHTML } from "slack-markdown";
 import { Input } from "../../components/form/Input";
 import { Select } from "../../components/form/Select";
@@ -8,12 +8,13 @@ import { typeOptions } from "../../utils/options";
 import "../../styles/preview.css";
 
 function Home() {
-  const [type, setType] = useState(typeOptions[0].value);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [completeTitle, setCompleteTitle] = useState("");
-  const [prLink, setPRLink] = useState("");
-  const [taskLink, setTaskLink] = useState("");
+  const [changelog, setChangelog] = useState({
+    type: typeOptions[0].value,
+    title: "",
+    description: "",
+    prLink: "",
+    taskLink: "",
+  });
 
   /**
    * TODO: Change this implementation to use navigator clipboard as
@@ -36,10 +37,6 @@ function Home() {
     }
   };
 
-  useEffect(() => {
-    setCompleteTitle(`<p>${type}: <strong>${title}</strong></p>`);
-  }, [title, type]);
-
   return (
     <div className="flex flex-col items-center">
       <h1 className="text-3xl lg:text-5xl font-bold underline text-red-500 p-10">
@@ -53,7 +50,7 @@ function Home() {
               label: "Title",
               options: typeOptions,
               onChangeFn: (e: React.ChangeEvent<HTMLInputElement>) =>
-                setType(e.target.value),
+                setChangelog({ ...changelog, type: e.target.value }),
             }}
           />
           <Input
@@ -61,7 +58,7 @@ function Home() {
               name: "title",
               label: "Title",
               onChangeFn: (e: React.ChangeEvent<HTMLInputElement>) =>
-                setTitle(e.target.value),
+                setChangelog({ ...changelog, title: e.target.value }),
             }}
           />
           <Input
@@ -69,7 +66,7 @@ function Home() {
               name: "taskLink",
               label: "Related Task",
               onChangeFn: (e: React.ChangeEvent<HTMLInputElement>) =>
-                setTaskLink(e.target.value),
+                setChangelog({ ...changelog, taskLink: e.target.value }),
             }}
           />
           <Input
@@ -77,7 +74,7 @@ function Home() {
               name: "prLink",
               label: "Related PR",
               onChangeFn: (e: React.ChangeEvent<HTMLInputElement>) =>
-                setPRLink(e.target.value),
+                setChangelog({ ...changelog, prLink: e.target.value }),
             }}
           />
           <Text
@@ -85,13 +82,13 @@ function Home() {
               name: "description",
               label: "Description",
               onChangeFn: (e: React.ChangeEvent<HTMLInputElement>) =>
-                setDescription(e.target.value),
+                setChangelog({ ...changelog, description: e.target.value }),
             }}
           />
         </form>
         <div className="flex flex-col w-full border-2 rounded px-2">
           <h5 className="self-center text-lg underline">Preview</h5>
-          {description ? (
+          {changelog.description ? (
             <button
               onClick={() => copyToClipboard()}
               className="place-self-end p-2"
@@ -100,27 +97,35 @@ function Home() {
             </button>
           ) : null}
           <div id="preview" className="preview">
-            {title ? (
-              <div dangerouslySetInnerHTML={{ __html: completeTitle }}></div>
+            {changelog.title ? (
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: `<p>${changelog.type}: <strong>${changelog.title}</strong></p>`,
+                }}
+              ></div>
             ) : null}
             <br />
             <div
               dangerouslySetInnerHTML={{
-                __html: toHTML(description),
+                __html: toHTML(changelog.description),
               }}
             ></div>
             <br />
-            {taskLink ? (
+            {changelog.taskLink ? (
               <div
                 dangerouslySetInnerHTML={{
-                  __html: `:link: ${toHTML(`<${taskLink}|Related Task>`)}`,
+                  __html: `:link: ${toHTML(
+                    `<${changelog.taskLink}|Related Task>`
+                  )}`,
                 }}
               ></div>
             ) : null}
-            {prLink ? (
+            {changelog.prLink ? (
               <div
                 dangerouslySetInnerHTML={{
-                  __html: `:github: ${toHTML(`<${prLink}|Related PR>`)}`,
+                  __html: `:github: ${toHTML(
+                    `<${changelog.prLink}|Related PR>`
+                  )}`,
                 }}
               ></div>
             ) : null}
