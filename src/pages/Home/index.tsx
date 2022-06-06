@@ -1,10 +1,7 @@
 import { useState } from "react";
-import { Input } from "../../components/form/Input";
-import { Select } from "../../components/form/Select";
-import { Text } from "../../components/form/Text";
-import { typeOptions } from "../../utils/options";
-import "../../styles/preview.css";
 import { Preview } from "../../components/Preview";
+import { ChangelogForm } from "../../components/ChangelogForm";
+import { typeOptions } from "../../utils/options";
 
 function Home() {
   const [changelog, setChangelog] = useState({
@@ -21,49 +18,7 @@ function Home() {
         ChangeLogger
       </h1>
       <div className="w-full flex flex-col md:flex-row gap-1 md:px-2">
-        <form className="rounded px-8 pt-6 border-2 pb-8 w-full">
-          <Select
-            params={{
-              name: "type",
-              label: "Title",
-              options: typeOptions,
-              onChangeFn: (e: React.ChangeEvent<HTMLInputElement>) =>
-                setChangelog({ ...changelog, type: e.target.value }),
-            }}
-          />
-          <Input
-            params={{
-              name: "title",
-              label: "Title",
-              onChangeFn: (e: React.ChangeEvent<HTMLInputElement>) =>
-                setChangelog({ ...changelog, title: e.target.value }),
-            }}
-          />
-          <Input
-            params={{
-              name: "taskLink",
-              label: "Related Task",
-              onChangeFn: (e: React.ChangeEvent<HTMLInputElement>) =>
-                setChangelog({ ...changelog, taskLink: e.target.value }),
-            }}
-          />
-          <Input
-            params={{
-              name: "prLink",
-              label: "Related PR",
-              onChangeFn: (e: React.ChangeEvent<HTMLInputElement>) =>
-                setChangelog({ ...changelog, prLink: e.target.value }),
-            }}
-          />
-          <Text
-            params={{
-              name: "description",
-              label: "Description",
-              onChangeFn: (e: React.ChangeEvent<HTMLInputElement>) =>
-                setChangelog({ ...changelog, description: e.target.value }),
-            }}
-          />
-        </form>
+        <ChangelogForm changelog={changelog} setChangelogFn={setChangelog} />
         <Preview changelog={changelog} />
       </div>
     </div>

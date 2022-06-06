@@ -1,15 +1,9 @@
 import { toHTML } from "slack-markdown";
 import { ReactComponent as CopyIcon } from "../../assets/icons/copy.svg";
+import { Changelog } from "../../types/changelog";
+import "../../styles/preview.css";
 
-type ChangeLog = {
-  type: string;
-  title: string;
-  description: string;
-  prLink: string;
-  taskLink: string;
-};
-
-export const Preview = (props: { changelog: ChangeLog }) => {
+export const Preview = (props: { changelog: Changelog }) => {
   const { changelog } = props;
   /**
    * TODO: Change this implementation to use navigator clipboard as

@@ -1,12 +1,10 @@
-import "./Form.css";
-
 type TextParams = {
   label: string;
   name: string;
   onChangeFn: Function;
 };
 
-export const Text = (props: { params: TextParams }) => {
+export const TextArea = (props: { params: TextParams }) => {
   const { label, name, onChangeFn } = props.params;
   return (
     <div className="mb-4">

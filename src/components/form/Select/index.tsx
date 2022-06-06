@@ -1,5 +1,3 @@
-import "./Form.css";
-
 type SelectParams = {
   label: string;
   name: string;
