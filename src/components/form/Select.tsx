@@ -3,12 +3,21 @@ import "./Form.css";
 type SelectParams = {
   label: string;
   name: string;
-  options: JSX.Element[];
+  options: { value: string; title: string }[];
   onChangeFn: Function;
 };
 
 export const Select = (props: { params: SelectParams }) => {
   const { label, name, options, onChangeFn } = props.params;
+
+  const generateOptions = () => {
+    return options.map((option) => (
+      <option key={option.value} value={option.value}>
+        {option.title}
+      </option>
+    ));
+  };
+
   return (
     <div className="mb-4">
       <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -19,7 +28,7 @@ export const Select = (props: { params: SelectParams }) => {
         name={name}
         onChange={(e) => onChangeFn(e)}
       >
-        {options}
+        {generateOptions()}
       </select>
     </div>
   );

@@ -4,45 +4,16 @@ import { Input } from "../../components/form/Input";
 import { Select } from "../../components/form/Select";
 import { Text } from "../../components/form/Text";
 import { ReactComponent as CopyIcon } from "../../assets/icons/copy.svg";
+import { typeOptions } from "../../utils/options";
 import "../../styles/preview.css";
 
 function Home() {
-  const typeOptions = [
-    {
-      title: "Bug",
-      value: "🐛 `#fixed`",
-    },
-    {
-      title: "Changed",
-      value: "♻️ `#changed`",
-    },
-    {
-      title: "Deprecated",
-      value: "🔥 `#deprecated`",
-    },
-    {
-      title: "Improvement",
-      value: "✨ `#improvement`",
-    },
-    {
-      title: "New",
-      value: "💖 `#new`",
-    },
-  ];
   const [type, setType] = useState(typeOptions[0].value);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [completeTitle, setCompleteTitle] = useState("");
   const [prLink, setPRLink] = useState("");
   const [taskLink, setTaskLink] = useState("");
-
-  const generateOptions = () => {
-    return typeOptions.map((option) => (
-      <option key={option.value} value={option.value}>
-        {option.title}
-      </option>
-    ));
-  };
 
   /**
    * TODO: Change this implementation to use navigator clipboard as
@@ -80,7 +51,7 @@ function Home() {
             params={{
               name: "type",
               label: "Title",
-              options: generateOptions(),
+              options: typeOptions,
               onChangeFn: (e: React.ChangeEvent<HTMLInputElement>) =>
                 setType(e.target.value),
             }}
