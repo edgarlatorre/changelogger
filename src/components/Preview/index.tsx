@@ -1,6 +1,7 @@
 import { toHTML } from "slack-markdown";
 import { ReactComponent as CopyIcon } from "../../assets/icons/copy.svg";
 import { Changelog } from "../../types/changelog";
+import { replaceUrl } from "../../utils/converter";
 import "../../styles/preview.css";
 
 export const Preview = (props: { changelog: Changelog }) => {
@@ -50,7 +51,7 @@ export const Preview = (props: { changelog: Changelog }) => {
         <br />
         <div
           dangerouslySetInnerHTML={{
-            __html: toHTML(changelog.description),
+            __html: toHTML(replaceUrl(changelog.description)),
           }}
         ></div>
         <br />
