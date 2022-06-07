@@ -1,3 +1,7 @@
 .preview a:link {
   color: blue;
 }
+
+code {
+  @apply border-2 rounded-sm px-1 bg-gray-100 text-red-400
+}
