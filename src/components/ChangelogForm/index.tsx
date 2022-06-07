@@ -16,7 +16,7 @@ export const ChangelogForm = (props: {
       <Select
         params={{
           name: "type",
-          label: "Title",
+          label: "Type",
           options: typeOptions,
           onChangeFn: (e: React.ChangeEvent<HTMLInputElement>) =>
             setChangelogFn({ ...changelog, type: e.target.value }),
