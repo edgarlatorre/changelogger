@@ -2,6 +2,6 @@ export type Changelog = {
   type: string;
   title: string;
   description: string;
-  prLink: string;
+  prs: {[key: string]: string},
   taskLink: string;
 };

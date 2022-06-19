@@ -3,6 +3,7 @@ import { ReactComponent as CopyIcon } from "../../assets/icons/copy.svg";
 import { Changelog } from "../../types/changelog";
 import { replaceUrl } from "../../utils/converter";
 import "../../styles/preview.css";
+import { PRSPreview } from "../PRSPreview";
 
 export const Preview = (props: { changelog: Changelog }) => {
   const { changelog } = props;
@@ -64,13 +65,7 @@ export const Preview = (props: { changelog: Changelog }) => {
             }}
           ></div>
         ) : null}
-        {changelog.prLink ? (
-          <div
-            dangerouslySetInnerHTML={{
-              __html: `:github: ${toHTML(`<${changelog.prLink}|Related PR>`)}`,
-            }}
-          ></div>
-        ) : null}
+        {<PRSPreview prs={changelog.prs} />}
       </div>
     </div>
   );

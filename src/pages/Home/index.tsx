@@ -8,7 +8,7 @@ function Home() {
     type: typeOptions[0].value,
     title: "",
     description: "",
-    prLink: "",
+    prs: {},
     taskLink: "",
   });
 
