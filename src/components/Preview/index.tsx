@@ -31,7 +31,7 @@ export const Preview = (props: { changelog: Changelog }) => {
   return (
     <div className="flex flex-col w-full border-2 rounded px-2">
       <h5 className="self-center text-lg underline">Preview</h5>
-      {changelog.description ? (
+      {changelog.title ? (
         <button
           onClick={() => copyToClipboard()}
           className="place-self-end p-2"
@@ -43,9 +43,7 @@ export const Preview = (props: { changelog: Changelog }) => {
         {changelog.title ? (
           <div
             dangerouslySetInnerHTML={{
-              __html: `<p>${toHTML(changelog.type)}: <strong>${
-                changelog.title
-              }</strong></p>`,
+              __html: `<p>${toHTML(changelog.type)}: <strong>${changelog.title}</strong></p>`,
             }}
           ></div>
         ) : null}

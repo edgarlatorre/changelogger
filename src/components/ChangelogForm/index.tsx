@@ -40,26 +40,12 @@ export const ChangelogForm = (props: {
       />
       <Input
         params={{
-          name: "frontendPRLink",
-          label: "Related PR (Frontend)",
+          name: "prLink",
+          label: "Related PR",
           onChangeFn: (e: React.ChangeEvent<HTMLInputElement>) =>
             setChangelogFn({
               ...changelog,
-              prs: {
-                ...changelog.prs,
-                "Related PR (Frontend)": e.target.value,
-              },
-            }),
-        }}
-      />
-      <Input
-        params={{
-          name: "backendPRLink",
-          label: "Related PR (Backend)",
-          onChangeFn: (e: React.ChangeEvent<HTMLInputElement>) =>
-            setChangelogFn({
-              ...changelog,
-              prs: { ...changelog.prs, "Related PR (Backend)": e.target.value },
+              prs: { ...changelog.prs, "Related PR": e.target.value },
             }),
         }}
       />
