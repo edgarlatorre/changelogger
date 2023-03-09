@@ -4,6 +4,7 @@ import { Changelog } from "../../types/changelog";
 import { replaceUrl } from "../../utils/converter";
 import "../../styles/preview.css";
 import { PRSPreview } from "../PRSPreview";
+import { Description } from "./Description";
 
 export const Preview = (props: { changelog: Changelog }) => {
   const { changelog } = props;
@@ -48,12 +49,30 @@ export const Preview = (props: { changelog: Changelog }) => {
           ></div>
         ) : null}
         <br />
-        <div
-          dangerouslySetInnerHTML={{
-            __html: toHTML(replaceUrl(changelog.description)),
-          }}
-        ></div>
-        <br />
+        {changelog.problem ? (
+          <>
+            <Description title="Problem" emoji="sweat_smile" content={changelog.problem} extraTitle="Before this"/>
+            <br />
+          </>
+        ) : null}
+        {changelog.benefits ? (
+          <>
+            <Description title="Benefits" emoji="heart_eyes" content={changelog.benefits} extraTitle="After this" />
+            <br />
+          </>
+        ) : null}
+        {changelog.solution ? (
+          <>
+            <Description title="Solution" emoji="gear" content={changelog.solution} extraTitle="How it works"/>
+            <br />
+          </>
+        ) : null}
+        {changelog.launchStrategy ? (
+          <>
+            <Description title="Go-to-market" emoji="earth_africa" content={changelog.launchStrategy} extraTitle="Launch strategy"/>
+            <br />
+          </>
+        ) : null}
         {changelog.taskLink ? (
           <div
             dangerouslySetInnerHTML={{

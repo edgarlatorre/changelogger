@@ -30,6 +30,38 @@ export const ChangelogForm = (props: {
             setChangelogFn({ ...changelog, title: e.target.value }),
         }}
       />
+      <TextArea
+        params={{
+          name: "problem",
+          label: "Problem",
+          onChangeFn: (e: React.ChangeEvent<HTMLInputElement>) =>
+            setChangelogFn({ ...changelog, problem: e.target.value }),
+        }}
+      />
+      <TextArea
+        params={{
+          name: "benefits",
+          label: "Benefits",
+          onChangeFn: (e: React.ChangeEvent<HTMLInputElement>) =>
+            setChangelogFn({ ...changelog, benefits: e.target.value }),
+        }}
+      />
+      <TextArea
+        params={{
+          name: "solution",
+          label: "Soltution",
+          onChangeFn: (e: React.ChangeEvent<HTMLInputElement>) =>
+            setChangelogFn({ ...changelog, solution: e.target.value }),
+        }}
+      />
+      <TextArea
+        params={{
+          name: "launchStrategy",
+          label: "Go-to-market",
+          onChangeFn: (e: React.ChangeEvent<HTMLInputElement>) =>
+            setChangelogFn({ ...changelog, launchStrategy: e.target.value }),
+        }}
+      />
       <Input
         params={{
           name: "taskLink",
@@ -47,14 +79,6 @@ export const ChangelogForm = (props: {
               ...changelog,
               prs: { ...changelog.prs, "Related PR": e.target.value },
             }),
-        }}
-      />
-      <TextArea
-        params={{
-          name: "description",
-          label: "Description",
-          onChangeFn: (e: React.ChangeEvent<HTMLInputElement>) =>
-            setChangelogFn({ ...changelog, description: e.target.value }),
         }}
       />
     </form>

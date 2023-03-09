@@ -7,7 +7,10 @@ function Home() {
   const [changelog, setChangelog] = useState({
     type: typeOptions[0].value,
     title: "",
-    description: "",
+    problem: "",
+    benefits: "",
+    solution: "",
+    launchStrategy: "",
     prs: {},
     taskLink: "",
   });
