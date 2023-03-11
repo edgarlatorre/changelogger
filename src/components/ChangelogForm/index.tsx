@@ -63,6 +63,16 @@ export const ChangelogForm = (props: { changelog: Changelog; setChangelogFn: Fun
             setChangelogFn({ ...changelog, launchStrategy: e.target.value }),
         }}
       />
+      <TextArea
+        params={{
+          name: 'kudos',
+          label: 'Kudos',
+          placeholder: 'Kudos to...',
+          rows: 4,
+          onChangeFn: (e: React.ChangeEvent<HTMLInputElement>) =>
+            setChangelogFn({ ...changelog, kudos: e.target.value }),
+        }}
+      />
       <Input
         params={{
           name: 'taskLink',

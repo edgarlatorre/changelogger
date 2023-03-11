@@ -21,7 +21,9 @@ export const Description = (props: DescriptionProps) => {
           <span>
             <strong>{title}</strong> | <em>{extraTitle}</em>
           </span>
-        ) : null}
+        ) : (
+          <strong>{title}</strong>
+        )}
       </p>
       <div dangerouslySetInnerHTML={{ __html: toHTML(replaceUrl(content)) }}></div>
     </div>

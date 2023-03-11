@@ -11,6 +11,7 @@ function Home() {
     benefits: '',
     solution: '',
     launchStrategy: '',
+    kudos: '',
     prs: {},
     taskLink: '',
   })

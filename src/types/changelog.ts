@@ -5,6 +5,7 @@ export type Changelog = {
   solution: string
   benefits: string
   launchStrategy: string
+  kudos: string
   prs: { [key: string]: string }
   taskLink: string
 }

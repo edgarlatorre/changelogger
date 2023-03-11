@@ -89,6 +89,12 @@ export const Preview = (props: { changelog: Changelog }) => {
             <br />
           </>
         ) : null}
+        {changelog.kudos ? (
+          <>
+            <Description title="Kudos" emoji="raised_hands" content={changelog.kudos} />
+            <br />
+          </>
+        ) : null}
         {changelog.taskLink ? (
           <div
             dangerouslySetInnerHTML={{
