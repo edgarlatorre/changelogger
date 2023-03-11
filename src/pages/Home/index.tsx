@@ -16,11 +16,15 @@ function Home() {
   })
 
   return (
-    <div className="flex flex-col items-center">
-      <h1 className="text-3xl lg:text-5xl font-bold underline text-red-500 p-10">ChangeLogger</h1>
+    <div className="flex flex-col items-center h-screen">
+      <h1 className="text-3xl lg:text-5xl font-bold underline text-red-500 p-5">ChangeLogger</h1>
       <div className="w-full flex flex-col md:flex-row gap-1 md:px-2">
-        <ChangelogForm changelog={changelog} setChangelogFn={setChangelog} />
-        <Preview changelog={changelog} />
+        <div className="w-full overflow-auto h-screen">
+          <ChangelogForm changelog={changelog} setChangelogFn={setChangelog} />
+        </div>
+        <div className="w-full">
+          <Preview changelog={changelog} />
+        </div>
       </div>
     </div>
   )
