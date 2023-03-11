@@ -1,8 +1,8 @@
-import { toHTML } from "slack-markdown";
+import { toHTML } from 'slack-markdown'
 
 export const PRSPreview = (props: { prs: { [key: string]: string } }) => {
-  const prs = props.prs;
-  const links: any[] = [];
+  const prs = props.prs
+  const links: any[] = []
 
   for (const label in prs) {
     links.push(
@@ -12,8 +12,8 @@ export const PRSPreview = (props: { prs: { [key: string]: string } }) => {
           __html: `:github: ${toHTML(`<${prs[label]}|${label}>`)}`,
         }}
       ></div>
-    );
+    )
   }
 
-  return <>{links}</>;
-};
+  return <>{links}</>
+}
