@@ -1,7 +1,8 @@
+'use client'
 import { useState } from 'react'
-import { Preview } from '../../components/Preview'
-import { ChangelogForm } from '../../components/ChangelogForm'
-import { typeOptions } from '../../utils/options'
+import { Preview } from '../components/Preview'
+import { ChangelogForm } from '../components/ChangelogForm'
+import { typeOptions } from '../utils/options'
 
 function Home() {
   const [changelog, setChangelog] = useState({

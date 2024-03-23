@@ -1,7 +1,7 @@
 import { toHTML } from 'slack-markdown'
-import { ReactComponent as CopyIcon } from '../../assets/icons/copy.svg'
 import { Changelog } from '../../types/changelog'
 import '../../styles/preview.css'
+import Image from 'next/image'
 import { PRSPreview } from '../PRSPreview'
 import { Description } from './Description'
 
@@ -33,7 +33,7 @@ export const Preview = (props: { changelog: Changelog }) => {
       <h5 className="self-center text-lg underline">Preview</h5>
       {changelog.title ? (
         <button onClick={() => copyToClipboard()} className="place-self-end p-2">
-          <CopyIcon className="w-6 h-6" />
+          <Image priority src={'copy.svg'} alt="copy to clipboard" width={18} height={18} />
         </button>
       ) : null}
       <div id="preview" className="preview">
