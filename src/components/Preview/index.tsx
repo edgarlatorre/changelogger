@@ -4,6 +4,7 @@ import '../../styles/preview.css'
 import Image from 'next/image'
 import { PRSPreview } from '../PRSPreview'
 import { Description } from './Description'
+import { saveChangelog } from '../../lib/notion'
 
 export const Preview = (props: { changelog: Changelog }) => {
   const { changelog } = props
@@ -32,9 +33,14 @@ export const Preview = (props: { changelog: Changelog }) => {
     <div className="flex flex-col w-full border-2 rounded px-2">
       <h5 className="self-center text-lg underline">Preview</h5>
       {changelog.title ? (
-        <button onClick={() => copyToClipboard()} className="place-self-end p-2">
-          <Image priority src={'copy.svg'} alt="copy to clipboard" width={18} height={18} />
-        </button>
+        <div className="flex justify-end gap-2">
+          <button onClick={() => copyToClipboard()}>
+            <Image priority src={'copy.svg'} alt="copy to clipboard" width={18} height={18} />
+          </button>
+          <button onClick={() => saveChangelog(changelog)}>
+            <Image priority src={'save.svg'} alt="publish changelog" width={18} height={18} />
+          </button>
+        </div>
       ) : null}
       <div id="preview" className="preview">
         {changelog.title ? (
