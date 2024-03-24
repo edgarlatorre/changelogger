@@ -4,7 +4,6 @@ import '../../styles/preview.css'
 import Image from 'next/image'
 import { PRSPreview } from '../PRSPreview'
 import { Description } from './Description'
-import { saveChangelog } from '../../lib/notion'
 
 export const Preview = (props: { changelog: Changelog }) => {
   const { changelog } = props
@@ -27,6 +26,14 @@ export const Preview = (props: { changelog: Changelog }) => {
         selection.removeAllRanges()
       }
     }
+  }
+
+  const saveChangelog = async (changelog: Changelog) => {
+    const response = await fetch('/api/changelog', {
+      method: 'POST',
+      body: JSON.stringify(changelog),
+    })
+    return response.json()
   }
 
   return (
