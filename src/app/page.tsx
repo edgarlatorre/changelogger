@@ -3,6 +3,7 @@ import { Suspense, useState } from 'react'
 import { Preview } from '../components/Preview'
 import { ChangelogForm } from '../components/ChangelogForm'
 import { typeOptions } from '../utils/options'
+import { Analytics } from '@vercel/analytics/react'
 
 function Home() {
   const [changelog, setChangelog] = useState({
@@ -25,6 +26,7 @@ function Home() {
           <ChangelogForm changelog={changelog} setChangelogFn={setChangelog} />
         </div>
         <div className="w-full">
+          <Analytics />
           <Suspense fallback={<div>Loading...</div>}>
             <Preview changelog={changelog} />
           </Suspense>
