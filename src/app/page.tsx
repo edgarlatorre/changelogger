@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
 import { Preview } from '../components/Preview'
 import { ChangelogForm } from '../components/ChangelogForm'
 import { typeOptions } from '../utils/options'
@@ -25,7 +25,9 @@ function Home() {
           <ChangelogForm changelog={changelog} setChangelogFn={setChangelog} />
         </div>
         <div className="w-full">
-          <Preview changelog={changelog} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Preview changelog={changelog} />
+          </Suspense>
         </div>
       </div>
     </div>

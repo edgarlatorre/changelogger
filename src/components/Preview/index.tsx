@@ -4,9 +4,14 @@ import '../../styles/preview.css'
 import Image from 'next/image'
 import { PRSPreview } from '../PRSPreview'
 import { Description } from './Description'
+import { useSearchParams } from 'next/navigation'
 
 export const Preview = (props: { changelog: Changelog }) => {
   const { changelog } = props
+  const searchParams = useSearchParams()
+
+  const dev = searchParams !== null && searchParams.get('dev') === 'true'
+
   /**
    * TODO: Change this implementation to use navigator clipboard as
    * the execCommand is deprecated.
@@ -28,13 +33,28 @@ export const Preview = (props: { changelog: Changelog }) => {
     }
   }
 
+  const saveChangelog = async (changelog: Changelog) => {
+    const response = await fetch('/api/changelog', {
+      method: 'POST',
+      body: JSON.stringify(changelog),
+    })
+    return response.json()
+  }
+
   return (
     <div className="flex flex-col w-full border-2 rounded px-2">
       <h5 className="self-center text-lg underline">Preview</h5>
       {changelog.title ? (
-        <button onClick={() => copyToClipboard()} className="place-self-end p-2">
-          <Image priority src={'copy.svg'} alt="copy to clipboard" width={18} height={18} />
-        </button>
+        <div className="flex justify-end gap-2">
+          <button onClick={() => copyToClipboard()}>
+            <Image priority src={'copy.svg'} alt="copy to clipboard" width={18} height={18} />
+          </button>
+          {dev && (
+            <button onClick={() => saveChangelog(changelog)}>
+              <Image priority src={'save.svg'} alt="publish changelog" width={18} height={18} />
+            </button>
+          )}
+        </div>
       ) : null}
       <div id="preview" className="preview">
         {changelog.title ? (
