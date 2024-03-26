@@ -4,9 +4,14 @@ import '../../styles/preview.css'
 import Image from 'next/image'
 import { PRSPreview } from '../PRSPreview'
 import { Description } from './Description'
+import { useSearchParams } from 'next/navigation'
 
 export const Preview = (props: { changelog: Changelog }) => {
   const { changelog } = props
+  const searchParams = useSearchParams()
+
+  const dev = searchParams !== null && searchParams.get('dev') === 'true'
+
   /**
    * TODO: Change this implementation to use navigator clipboard as
    * the execCommand is deprecated.
@@ -44,9 +49,11 @@ export const Preview = (props: { changelog: Changelog }) => {
           <button onClick={() => copyToClipboard()}>
             <Image priority src={'copy.svg'} alt="copy to clipboard" width={18} height={18} />
           </button>
-          <button onClick={() => saveChangelog(changelog)}>
-            <Image priority src={'save.svg'} alt="publish changelog" width={18} height={18} />
-          </button>
+          {dev && (
+            <button onClick={() => saveChangelog(changelog)}>
+              <Image priority src={'save.svg'} alt="publish changelog" width={18} height={18} />
+            </button>
+          )}
         </div>
       ) : null}
       <div id="preview" className="preview">
