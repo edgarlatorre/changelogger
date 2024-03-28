@@ -1,0 +1,61 @@
+{
+  "domains": [
+    {
+      "name": "People",
+      "teams": [
+        "Recruitment",
+        "Performance Engagement",
+        "Employee Data",
+        "Organizations",
+        "Trainings"
+      ]
+    },
+    {
+      "name": "Payroll + Time",
+      "teams": [
+        "Payment",
+        "Policies",
+        "Accounting Sync",
+        "Invoicing & Reconciliation",
+        "Spending Flows"
+      ]
+    },
+    {
+      "name": "Core",
+      "teams": [
+        "Mobile",
+        "Documents",
+        "Processes & Communications",
+        "Identity",
+        "Integrations (Marketplace, API & SDK)",
+        "Analytics",
+        "AI",
+        "Growth",
+        "UX Content Design"
+      ]
+    },
+    {
+      "name": "Platform",
+      "teams": [
+        "Infrastructure",
+        "Security",
+        "Data Analytics",
+        "Data Platform",
+        "Developer Expirience"
+      ]
+    },
+    {
+      "name": "Finance",
+      "teams": [
+        "Payment Policies",
+        "Accounting Sync",
+        "Invoicing & Reconciliation",
+        "Spending Flows"
+      ]
+    },
+    {
+      "name": "Growth",
+      "teams": ["Marketing", "Finance"]
+    }
+  ]
+}

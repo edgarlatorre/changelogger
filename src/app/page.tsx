@@ -4,8 +4,9 @@ import { Preview } from '../components/Preview'
 import { ChangelogForm } from '../components/ChangelogForm'
 import { typeOptions } from '../utils/options'
 import { Analytics } from '@vercel/analytics/react'
+import { getDomains } from '@/lib/domains'
 
-function Home() {
+async function Home() {
   const [changelog, setChangelog] = useState({
     type: typeOptions[0].value,
     title: '',
@@ -18,6 +19,8 @@ function Home() {
     taskLink: '',
   })
 
+  const domains = getDomains()
+
   return (
     <div className="flex flex-col items-center h-screen">
       <h1 className="text-3xl lg:text-5xl font-bold underline text-red-500 p-5">ChangeLogger</h1>
@@ -28,7 +31,7 @@ function Home() {
         <div className="w-full">
           <Analytics />
           <Suspense fallback={<div>Loading...</div>}>
-            <Preview changelog={changelog} />
+            <Preview changelog={changelog} domains={domains} />
           </Suspense>
         </div>
       </div>

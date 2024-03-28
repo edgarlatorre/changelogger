@@ -6,9 +6,16 @@ import { PRSPreview } from '../PRSPreview'
 import { Description } from './Description'
 import { useSearchParams } from 'next/navigation'
 
-export const Preview = (props: { changelog: Changelog }) => {
-  const { changelog } = props
+interface PreviewProps {
+  changelog: Changelog
+  domains: any
+}
+
+export const Preview = (props: PreviewProps) => {
+  const { changelog, domains } = props
   const searchParams = useSearchParams()
+
+  console.log('domains', JSON.stringify(domains))
 
   const dev = searchParams !== null && searchParams.get('dev') === 'true'
 
